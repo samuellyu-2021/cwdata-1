@@ -23,5 +23,6 @@ Suggests:
     ggplot2,
     dplyr,
     lubridate,
-    glue
+    glue,
+    testthat
 VignetteBuilder: knitr
