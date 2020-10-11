@@ -3,8 +3,10 @@
 
 # cwdata
 
-<!-- badges: start --> 
+<!-- badges: start -->
 
+[![R build
+status](https://github.com/samuellyu-2021/cwdata-1/workflows/R-CMD-check/badge.svg)](https://github.com/samuellyu-2021/cwdata-1/actions)
 <!-- badges: end -->
 
 The goal of cwdata is to provide datasets and functions for the CWD

@@ -6,3 +6,4 @@
 # - comment out liens cmd + shift C
 # - save cmd + S
 # - devtools::test() cmd + shift + t
+# - devtools::check cmd + shift + e
