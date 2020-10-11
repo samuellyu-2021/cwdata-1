@@ -1,0 +1,67 @@
+---
+title: "Our World in Data: Key Crop Yields"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Our World in Data: Key Crop Yields}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 6.5,
+  fig.height = 5
+)
+```
+
+```{r setup}
+library(cwdata)
+```
+
+  - A dataset containing crop yields for countries over time. Yields are measured in tonnes per hectare for `r length(unique(key_crop_yields$crop))` crops which are `r glue::glue_collapse(unique(key_crop_yields$crop), sep = ", ", last = "and")`.
+
+  - The dataset has been sourced from [Our World in Data](https://ourworldindata.org/crop-yields)  and [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md)
+"key_crop_yields" and it can be called with _key_crop_yields_ by loading the _cwdata_ package
+
+It can be accessed by
+
+```{r}
+library(cwdata)
+library(tibble)
+key_crop_yields
+```
+
+# Exploration fo the data
+  
+```{r examples}
+library(ggplot2)
+library(dplyr)
+key_crop_yields %>%
+  filter(entity == "Australia") %>%
+  ggplot(aes(x = year,
+             y = tonnes_per_hectare)) + 
+  geom_line() +
+  facet_wrap(~crop, scales = "free_y") +
+  labs(y = "tonnes per hectar",
+       x = "year")
+
+
+key_crop_yields %>%
+  ggplot(aes( x = tonnes_per_hectare,
+         y = crop)) +
+  geom_point()
+
+
+key_crop_yields %>%
+  filter(crop == "wheat") %>%
+  group_by(entity, year) %>%
+  summarise(n = sum(tonnes_per_hectare)) %>%
+  head(n = 500) %>%
+  ggplot(aes(x = year,
+             y = n,
+             color = entity)) +
+  geom_line() +
+  labs(x = "Wheat yield, tonnes per hectar")
+```
