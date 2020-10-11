@@ -1,0 +1,17 @@
+template:
+  params:
+    bootswatch: cerulean
+    
+navbar:
+  structure:
+    left: [help]
+    right: [github]
+  components:
+    home: ~
+    help:
+      text: Get started
+      href: article/crops.html
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/samuellyu-2021/cwdata-1
+      
